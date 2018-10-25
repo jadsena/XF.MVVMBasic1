@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +12,14 @@ using XF.MVVMBasic.ViewModel;
 namespace XF.MVVMBasic.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AlunoView : ContentPage
+	public partial class NovoAlunoView : ContentPage
 	{
-		public AlunoView ()
-		{
-            InitializeComponent ();
+        AlunoViewModel viewModel = new AlunoViewModel();
+        public NovoAlunoView()
+        {
+            BindingContext = viewModel;
+            InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new NovoAlunoView());
-        }
     }
 }

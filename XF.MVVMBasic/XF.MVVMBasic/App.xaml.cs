@@ -1,18 +1,21 @@
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XF.MVVMBasic.ViewModel;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace XF.MVVMBasic
 {
 	public partial class App : Application
 	{
-		public App ()
+        public static AlunoViewModel alunoViewModel = new AlunoViewModel();
+        public App ()
 		{
 			InitializeComponent();
 
             //MainPage = new MainPage();
-            MainPage = new NavigationPage(new View.AlunoView());
+            MainPage = new NavigationPage(new View.AlunoView()
+            { BindingContext = alunoViewModel });
         }
 
 		protected override void OnStart ()

@@ -2,12 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XF.MVVMBasic.View.AlunoView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Adicionar"  Order="Primary" Priority="1" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <Label Text="Aluno" Font="20" />
-            <Label Text="{Binding Nome}" />
-            <Label Text="{Binding RM}" />
-            <Label Text="{Binding Email}" />
+            <Button Text="Novo Aluno" Clicked="Button_Clicked"/>
+            <ListView x:Name="lstAluno" SeparatorVisibility="None" ItemsSource="Alunos">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <AbsoluteLayout VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand">
+                                <StackLayout AbsoluteLayout.LayoutFlags="All"
+                                                         AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                             Padding="10, 10, 10, 10">
+                                    <Grid Grid.ColumnSpan="3">
+                                        <Label Text="{Binding Nome}" Grid.Column="0" />
+                                        <Label Text="{Binding RM}" Grid.Column="1" />
+                                        <Label Text="{Binding Email}" Grid.Column="2" />
+                                    </Grid>
+                                </StackLayout>
+                            </AbsoluteLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
